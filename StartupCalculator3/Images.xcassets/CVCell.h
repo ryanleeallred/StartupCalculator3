@@ -1,0 +1,15 @@
+//
+//  CVCell.h
+//  StartupCalculator3
+//
+//  Created by Ryan Allred on 7/26/14.
+//  Copyright (c) 2014 Ryan Allred. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface CVCell : UICollectionViewCell
+
+@property (strong, nonatomic) IBOutlet UILabel *label;
+
+@end

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="14A298i" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Company" representedClassName="Company">
+        <attribute name="foundingDate" optional="YES" attributeType="Date">
+            <userInfo/>
+        </attribute>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberOfShares" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="advisors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Shareholder" syncable="YES"/>
+        <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Shareholder" syncable="YES"/>
+        <relationship name="exitEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExitEvent" inverseName="company" inverseEntity="ExitEvent" syncable="YES"/>
+        <relationship name="founders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Shareholder" inverseName="company" inverseEntity="Shareholder" syncable="YES"/>
+        <relationship name="rounds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Round" inverseName="company" inverseEntity="Round" syncable="YES"/>
+        <userInfo/>
+    </entity>
+    <entity name="ExitEvent" representedClassName="ExitEvent" syncable="YES">
+        <attribute name="exitDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="exitValuation" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="exitEvent" inverseEntity="Company" syncable="YES"/>
+    </entity>
+    <entity name="Round" representedClassName="Round" syncable="YES">
+        <attribute name="amountRaised" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="convertibleNote" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="discountToRound" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="fundingDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="interestRate" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="liquidationPreference" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="participating" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="valuationCap" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="rounds" inverseEntity="Company" syncable="YES"/>
+    </entity>
+    <entity name="Shareholder" representedClassName="Shareholder" syncable="YES">
+        <attribute name="equity" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="founders" inverseEntity="Company" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Company" positionX="261" positionY="189" width="128" height="165"/>
+        <element name="ExitEvent" positionX="421" positionY="315" width="128" height="88"/>
+        <element name="Round" positionX="7" positionY="216" width="128" height="178"/>
+        <element name="Shareholder" positionX="99" positionY="440" width="117" height="90"/>
+    </elements>
+</model>
